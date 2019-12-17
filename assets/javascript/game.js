@@ -1,3 +1,6 @@
+
+//if user presses a key, start the game.
+
 //initialize global variables: 
 
 //number of lives
@@ -515,48 +518,30 @@ for (i=0; i < wordToGuess.length; i++) {
 
 var lettersToGuess = Array.from(wordToGuess);
 
-//Take the lettersToGuess array, and create a boolean variable for each letter (starting at False). If the letter is guessed, we will flip the boolean to True and display the letter in the document. 
+//write letters out in HTML document as underscores
 
-var numlettersRemaining = arrlettersToGuess[0]+checkGuess();
-var numtotalLetters = arrlettersToGuess.length();
-
-//get user input for letter
-
-
-
-//compare user input to letters in array. if it's the same, move to the next letter. if it's different, lose a life. if no lives left, game over. 
-
-function evaluateGuess(lettersRemaining,userInput) {
-
-    if (userInput === currentLetter[i]) { 
-        //document.write into whatever HTML to flip whatever blank we're on to its actual letter
-
-        //add 1 to the currentLetter index so that it now contains  the next letter in the word
-        return currentLetter[i]++   
-
-        if(currentLetter[i] = totalLetters) {
-            //game over! You win!
-            //log a win
-            //wanna play again? 
-        };
-    }   
-    
-    else if (lives > 0) { 
-        
-        //user loses a life
-    }
-
-    else if (lives = 0) {
-        
-        //game over, man!
-        //log a loss
-        //wanna play again? 
-    }
-
-    
-    
-    
+for (i=0; i < lettersToGuess; i++){
+    document.createElement('div');
+    div.textContent = "_";
+    div.setAttribute("id")= i;
+    document.body.appendChild(div);
 };
+
+console.log(lettersToGuess)
+
+
+//make a function get user input for letter. log the input. if it's the same as something that's already been logged, throw an alert that says "pick something else". 
+
+function getInput() {
+    var userInput = event.key
+
+}
+
+//Call the getInput function and then compare its output to the lettersToGuess array. If it's the same, move to the next letter. If it's different, lose a life. if no lives left, game over. 
+
+    
+    
+    
 
 evaluateGuess();
 
@@ -587,4 +572,3 @@ evaluateGuess();
 
 
 //win or lose, show a "new game" button
-
