@@ -1,12 +1,11 @@
-
-
-//initialize global variables: 
-
+ 
+//here, we put our globals that need to be re-set every round: 
 //number of lives
 var numlives = 5;
 
 //guessed letters
 var lettersGuessed = []
+
 
 //word list array  
 
@@ -518,34 +517,74 @@ for (var i=0; i < lettersToGuess.length; i++){
     
     letterDiv = document.createElement("div");
     letterDiv.innerText = "_";
-    letterDiv.setAttribute("id", lettersToGuess[i]);
+    letterDiv.setAttribute("class", lettersToGuess[i]);
     letterContainer.appendChild(letterDiv);
     console.log(letterDiv);
     };
 
+//this is essentially the main gameplay loop. here, we keep variables that need to be tracked across plays.
 document.onkeyup = function (event) {
-    var userInput = event.key.toLowerCase();
+    var wins;
+    var losses;
+
+    const userInput = event.key.toLowerCase();
     console.log(userInput);
+
     if (lettersGuessed.includes(userInput)){
         alert("You already guessed : " + userInput + " !")
     }
     
     else if (lettersToGuess.includes(userInput)) {
-        console.log(userInput + "but in the if statement");
-        document.getElementById(userInput).innerText = userInput;
-        console.log("check worked");
-        lettersGuessed.push(userInput);
-        console.log(lettersGuessed);
+
+            elements = document.getElementsByClassName(userInput);
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].innerText = userInput;
+            }
+               
+            console.log(lettersToGuess.lastIndexOf(userInput))
+            console.log(document.getElementsByClassName(userInput))
+            lettersGuessed.push(userInput)
+            console.log(lettersGuessed.push(userInput))
             
+
+        } 
+        
+
+    
+
+    else if (!(lettersToGuess.includes(userInput)) && numlives === 0) { 
+        //document.getElementById("loss-screen").setAttribute()
+        var losses;
+        losses++; 
+        //play again? 
+        console.log(losses);
+
     }
 
     else if (!(lettersToGuess.includes(userInput))) {
-        return numlives--
-        
+        lettersGuessed.push(userInput);
+        numlives--;
+        console.log(numlives);
+     
+    }
+    
+
+    else if (lettersToGuess.ever(lettersGuessed)) {
+        var wins;
+        wins++
+        console.log(wins)
+ 
     };
-    console.log(numlives);
 
 }
+    
+
+
+    console.log(numlives)
+    console.log(wins)
+    console.log(losses)
+    
+
 
 
 
@@ -555,21 +594,3 @@ document.onkeyup = function (event) {
 
     
 
-//check user input against current letter
-
-
-
-//else, if user input !== letter, log a miss, lose a life, wait for new input
-
-
-
-//if user gets full word complete, show win screen
-
-
-
-//if user loses all lives, show loss screen
-
-
-
-
-//win or lose, show a "new game" button
