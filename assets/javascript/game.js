@@ -4,13 +4,10 @@
 //initialize global variables: 
 
 //number of lives
-var numlives = 4;
+var numlives = 5;
 
-//number of wins
-var numwins = 0;
-
-//number of losses
-var numlosses = 0;
+//guessed letters
+var lettersGuessed = []
 
 //word list array
 
@@ -507,48 +504,56 @@ var wordList = [
 var wordToGuess = wordList[Math.floor(Math.random() * wordList.length)];
 console.log(wordToGuess);
 
-//render wordToGuess in HTML as blanks within "Word To Guess" section of document
-
-for (i=0; i < wordToGuess.length; i++) {
-    document.write(" _ ");
-};
-
-
-//re-make wordToGuess into an array of its letters.  
+//break the word into an array of its own letters
 
 var lettersToGuess = Array.from(wordToGuess);
 
-//write letters out in HTML document as underscores
+//make a div to hold the letters, then make a div for each letter, enter an underscore in the div. then, add event listeners to each div. let the event listen for a key press that is equal to a letter in the array. then, check the letter's index value and change text within the div with that ID to show the letter. 
 
-for (i=0; i < lettersToGuess; i++){
-    document.createElement('div');
-    div.textContent = "_";
-    div.setAttribute("id")= i;
-    document.body.appendChild(div);
-};
+var letterContainer = document.getElementById("letterbox");
 
-console.log(lettersToGuess)
+console.log(letterContainer);
+
+var letterDiv;
+for (var i=0; i < lettersToGuess.length; i++){
+    
+    letterDiv = document.createElement("div");
+    letterDiv.innerText = "_";
+    letterDiv.setAttribute("id", lettersToGuess[i]);
+    console.log (letterContainer);
+    letterContainer.appendChild(letterDiv);
+    letterDiv.addEventListener("keyup", function checkLetter() {
+        var userInput = onkeyup.key
+        for (var a=0; a < lettersToGuess.length; a++){
+
+            if (userInput === lettersGuessed[o]){
+                alert("You already guessed that!")
+               
+            }
+
+            else if (userInput === lettersToGuess[i]) {
+                letterDiv.getElementById(i);
+                letterDiv.innerText = userInput;
+            }
+            
+            else {
+                lettersGuessed.push(userInput)
+                numlives--;
+                console.log(lettersGuessed)
+            }
+            
+
+        }
+
+    });
+    };
 
 
-//make a function get user input for letter. log the input. if it's the same as something that's already been logged, throw an alert that says "pick something else". 
 
-function getInput() {
-    var userInput = event.key
 
-}
 
-//Call the getInput function and then compare its output to the lettersToGuess array. If it's the same, move to the next letter. If it's different, lose a life. if no lives left, game over. 
 
     
-    
-    
-
-evaluateGuess();
-
-
-
-
-
 
 //check user input against current letter
 
