@@ -1,5 +1,4 @@
 
-//if user presses a key, start the game.
 
 //initialize global variables: 
 
@@ -9,7 +8,7 @@ var numlives = 5;
 //guessed letters
 var lettersGuessed = []
 
-//word list array
+//word list array  
 
 var wordList = [
     "lake",
@@ -498,7 +497,6 @@ var wordList = [
     "emotion",
 ];
 
-
 //at the start of the game, pick a word from the list
 
 var wordToGuess = wordList[Math.floor(Math.random() * wordList.length)];
@@ -508,11 +506,12 @@ console.log(wordToGuess);
 
 var lettersToGuess = Array.from(wordToGuess);
 
+console.log(lettersToGuess);
 //make a div to hold the letters, then make a div for each letter, enter an underscore in the div. then, add event listeners to each div. let the event listen for a key press that is equal to a letter in the array. then, check the letter's index value and change text within the div with that ID to show the letter. 
 
 var letterContainer = document.getElementById("letterbox");
 
-console.log(letterContainer);
+
 
 var letterDiv;
 for (var i=0; i < lettersToGuess.length; i++){
@@ -520,33 +519,34 @@ for (var i=0; i < lettersToGuess.length; i++){
     letterDiv = document.createElement("div");
     letterDiv.innerText = "_";
     letterDiv.setAttribute("id", lettersToGuess[i]);
-    console.log (letterContainer);
     letterContainer.appendChild(letterDiv);
-    letterDiv.addEventListener("keyup", function checkLetter() {
-        var userInput = onkeyup.key
-        for (var a=0; a < lettersToGuess.length; a++){
-
-            if (userInput === lettersGuessed[o]){
-                alert("You already guessed that!")
-               
-            }
-
-            else if (userInput === lettersToGuess[i]) {
-                letterDiv.getElementById(i);
-                letterDiv.innerText = userInput;
-            }
-            
-            else {
-                lettersGuessed.push(userInput)
-                numlives--;
-                console.log(lettersGuessed)
-            }
-            
-
-        }
-
-    });
+    console.log(letterDiv);
     };
+
+document.onkeyup = function (event) {
+    var userInput = event.key.toLowerCase();
+    console.log(userInput);
+    if (lettersGuessed.includes(userInput)){
+        alert("You already guessed : " + userInput + " !")
+    }
+    
+    else if (lettersToGuess.includes(userInput)) {
+        console.log(userInput + "but in the if statement");
+        document.getElementById(userInput).innerText = userInput;
+        console.log("check worked");
+        lettersGuessed.push(userInput);
+        console.log(lettersGuessed);
+            
+    }
+
+    else if (!(lettersToGuess.includes(userInput))) {
+        return numlives--
+        
+    };
+    console.log(numlives);
+
+}
+
 
 
 
@@ -559,11 +559,7 @@ for (var i=0; i < lettersToGuess.length; i++){
 
 
 
-//if user input === letter, advance to next letter, and wait for new input
-
-
-
-//else, if user input !== letter, log a miss, lose a life, don't advance, and wait for new input
+//else, if user input !== letter, log a miss, lose a life, wait for new input
 
 
 
