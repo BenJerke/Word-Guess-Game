@@ -1,4 +1,4 @@
- 
+
 //here, we put our globals that need to be re-set every round: 
 //number of lives
 var numlives = 5;
@@ -496,6 +496,8 @@ var wordList = [
     "emotion",
 ];
 
+
+
 //at the start of the game, pick a word from the list
 
 var wordToGuess = wordList[Math.floor(Math.random() * wordList.length)];
@@ -541,7 +543,6 @@ document.onkeyup = function (event) {
                 elements[i].innerText = userInput;
             }
                
-            console.log(lettersToGuess.lastIndexOf(userInput))
             console.log(document.getElementsByClassName(userInput))
             lettersGuessed.push(userInput)
             console.log(lettersGuessed.push(userInput))
@@ -576,14 +577,9 @@ document.onkeyup = function (event) {
  
     };
 
-}
-    
+};
 
 
-    console.log(numlives)
-    console.log(wins)
-    console.log(losses)
-    
 
 
 

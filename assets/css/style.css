@@ -1,14 +1,10 @@
-
-
-
-.hiddenletter {
-    
-    display: none;
-
+#contentzone{
+    margin: 20%;
+    padding: 10%
 }
 
-.visletter {
-    
-    display: block;
+#letterbox div{
+    float: left;
+    margin: 5px;
 
 }
